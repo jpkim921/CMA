@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180910020352) do
+ActiveRecord::Schema.define(version: 20180910033756) do
 
   create_table "children", force: :cascade do |t|
     t.string   "last_name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180910020352) do
   create_table "parents", force: :cascade do |t|
     t.string   "last_name"
     t.string   "first_name"
-    t.integer  "phone_number"
+    t.string   "phone_number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
