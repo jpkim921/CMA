@@ -3,4 +3,7 @@
 <strong>Phone Number: </strong><%= phone_number(@parent) %>
 <hr>
 
+<%= link_to "Delete", @parent, method: :delete, data: { confirm: "Confirm Deletion" } %>
+
+
 <h3>Registered Child/Children</h3>

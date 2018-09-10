@@ -34,10 +34,10 @@ class ParentsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @parent.destroy
-  #   redirect_to parents_path
-  # end
+  def destroy
+    @parent.destroy
+    redirect_to parents_path
+  end
 
 
   private
