@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+parent = {
+  first_name: "Roger",
+  last_name: "Aaron",
+  phone_number: 123,
+
+}
+
+Parent.create(parent)
