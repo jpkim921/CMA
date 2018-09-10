@@ -1,12 +1,12 @@
 class ParentsController < ApplicationController
-  # before_action :set_parent
+  before_action :set_parent, only: [:show, :edit, :update, :destroy]
 
   def index
     @parents = Parent.all
   end
 
   def show
-    @parent = Parent.find(params[:id])
+    # @parent = Parent.find(params[:id])
   end
 
   def new
@@ -22,6 +22,22 @@ class ParentsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+  end
+
+  def update
+    if @parent.update(parent_params)
+      redirect_to parent_path(@parent)
+    else
+      render :edit
+    end
+  end
+
+  # def destroy
+  #   @parent.destroy
+  #   redirect_to parents_path
+  # end
 
 
   private

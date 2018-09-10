@@ -1,0 +1,8 @@
+<%= form_for @parent do |f| %>
+  <%= f.text_field :first_name, placeholder: "First Name" %><%= f.text_field :last_name, placeholder: "Last Name" %>
+  <br><br>
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number, placeholder: "Ex. 123-456-7890" %>
+  <br><br>
+  <%= f.submit "Register" %>
+<% end %>
