@@ -1,7 +1,7 @@
 <%= form_for @child do |f| %>
   <%= f.text_field :first_name, placeholder: "First Name" %><%= f.text_field :last_name, placeholder: "Last Name" %>
   <br><br>
-  <%= f.date_select(:dob, use_month_numbers: true) %>
+  <%= f.date_select :dob %>
   <br><br>
   <%= f.submit "Add" %>
 <% end %>
