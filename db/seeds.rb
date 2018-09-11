@@ -9,7 +9,8 @@
 parent = {
   first_name: "Roger",
   last_name: "Aaron",
-  phone_number: "123-456-7890"
+  phone_number: "111-111-1111",
+  password: "test"
 
 }
 
