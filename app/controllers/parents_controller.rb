@@ -1,5 +1,6 @@
 class ParentsController < ApplicationController
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
+  before_action :check_for_login, only: [:show]
 
   def index
     @parents = Parent.all
@@ -46,6 +47,8 @@ class ParentsController < ApplicationController
   end
 
   def parent_params
-    params.require(:parent).permit(:first_name, :last_name, :phone_number)
+    params.require(:parent).permit(:first_name, :last_name, :phone_number, :password)
   end
+
+
 end

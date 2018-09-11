@@ -1,0 +1,17 @@
+<% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+<% end %>
+
+<h1>Sign in</h1>
+
+<%= form_tag login_path, method: :post do %>
+
+  <%= label_tag :phone_number %>
+  <%= text_field_tag :phone_number, params[:phone_number] %>
+  <br><br>
+  <%= label_tag :password %>
+  <%= text_field_tag :password, params[:password] %>
+  <br><br>
+  <%= submit_tag "Log In" %>
+
+<% end %>

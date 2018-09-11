@@ -1,6 +1,18 @@
+<% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+<% end %>
+
 <h3><%= name(@parent) %></h3>
 
-<strong>Phone Number: </strong><%= phone_number(@parent) %>
+<div class="">
+    <%= link_to "Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post %>
+</div>
+
+
+
+<div class="">
+  <strong>Phone Number: </strong><%= phone_number(@parent) %>
+</div>
 <hr>
 
 <%= link_to "Delete", @parent, method: :delete, data: { confirm: "Confirm Deletion" } %>
