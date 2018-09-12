@@ -15,18 +15,12 @@
 </div>
 <hr>
 
+<%= link_to "Edit", edit_parent_path(@parent) %>
 <%= link_to "Delete", @parent, method: :delete, data: { confirm: "Confirm Deletion" } %>
 
 
 <h3>Registered Child/Children</h3>
 <div><%= link_to "Add Child", new_child_path %></div>
-
-<ul>
-  <% @parent.children.each do |child| %>
-    <li><%= link_to name(child), child_path(child) %></li>
-  <% end %>
-</ul>
-
 
 <table>
   <tbody>
