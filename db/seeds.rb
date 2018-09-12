@@ -19,11 +19,21 @@ Parent.create(parent)
 cr = {
   classroom_1: {
   name: "Pre-k",
-  teacher_name: "Snoopy" 
+  teacher_name: "Snoopy",
+  age_low: 3,
+  age_high: 4
   },
 classroom_2: {
-  name: "1st Grade",
-  teacher_name: "Miss First"
+  name: "Class A",
+  teacher_name: "Spongebob",
+  age_low: 5,
+  age_high: 7
+  },
+  classroom_3: {
+  name: "Class B",
+  teacher_name: "Cartman",
+  age_low: 8,
+  age_high: 10
   }
 }
 
