@@ -5,18 +5,17 @@
 <h3><%= name(@parent) %></h3>
 
 <div class="">
-    <%= link_to "Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post %>
-</div>
-
-
-
-<div class="">
   <strong>Phone Number: </strong><%= phone_number(@parent) %>
 </div>
-<hr>
+<br>
 
-<%= link_to "Edit", edit_parent_path(@parent) %>
-<%= link_to "Delete", @parent, method: :delete, data: { confirm: "Confirm Deletion" } %>
+<div class="">
+  <%= link_to "Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post %>
+  <%= link_to "Edit", edit_parent_path(@parent) %>
+  <%= link_to "Delete", @parent, method: :delete, data: { confirm: "Confirm Deletion" } %>
+</div>
+
+<hr>
 
 
 <h3>Registered Child/Children</h3>
