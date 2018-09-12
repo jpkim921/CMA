@@ -23,6 +23,17 @@ class ChildrenController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @child.update(child_params)
+      redirect_to parent_path(@child.parent)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     # binding.pry
     @child.destroy
@@ -35,7 +46,7 @@ class ChildrenController < ApplicationController
   def set_child
     @child = Child.find(params[:id])
   end
-  
+
   def child_params
     params.require(:child).permit(:first_name, :last_name, :dob)
   end
