@@ -27,3 +27,17 @@
   <% end %>
 </ul>
 
+
+<table>
+  <tbody>
+    <% @parent.children.each do |child| %>
+    <tr>
+      <td><li><%= link_to name(child), child_path(child) %></li></td>
+      <td><%= link_to "Edit", edit_child_path(child) %></td>
+      <td><%= link_to "Delete", child, method: :delete, data: { confirm: "Confirm Deletion" } %>
+</td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
