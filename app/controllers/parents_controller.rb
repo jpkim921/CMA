@@ -18,6 +18,7 @@ class ParentsController < ApplicationController
     @parent = Parent.create(parent_params)
 
     if @parent.save
+      session[:parent_id] = @parent.id
       redirect_to parent_path(@parent)
     else
       render :new
@@ -37,7 +38,7 @@ class ParentsController < ApplicationController
 
   def destroy
     @parent.destroy
-    redirect_to parents_path
+    redirect_to root_path
   end
 
 

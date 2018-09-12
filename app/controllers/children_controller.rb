@@ -2,8 +2,10 @@ class ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
 
 
+
   def new
     @child = Child.new
+    @parent = Parent.find(session[:parent_id])
   end
 
   # def create
@@ -36,9 +38,11 @@ class ChildrenController < ApplicationController
   end
 
   def edit
+    @parent = Parent.find(session[:parent_id])
   end
 
   def update
+        
     if @child.update(child_params)
       redirect_to parent_path(@child.parent)
     else
@@ -53,14 +57,17 @@ class ChildrenController < ApplicationController
   end
 
 
+  
+  
   private
 
   def set_child
     @child = Child.find(params[:id])
   end
-
+  
   def child_params
     params.require(:child).permit(:first_name, :last_name, :dob)
   end
-
+  
+      
 end
