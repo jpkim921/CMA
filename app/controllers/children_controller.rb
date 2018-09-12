@@ -6,14 +6,26 @@ class ChildrenController < ApplicationController
     @child = Child.new
   end
 
+  # def create
+  #   @child = Child.create(child_params)
+  #   @parent = Parent.find(session[:parent_id])
+  #
+  #   if @child.save
+  #     @parent.children << @child
+  #     @parent.save
+  #
+  #     redirect_to parent_path(@parent)
+  #   else
+  #     render :new
+  #   end
+  # end
+
+
   def create
-    @child = Child.create(child_params)
     @parent = Parent.find(session[:parent_id])
+    @child = @parent.children.build(child_params)
 
     if @child.save
-      @parent.children << @child
-      @parent.save
-
       redirect_to parent_path(@parent)
     else
       render :new
