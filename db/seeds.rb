@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 parent = {
-  first_name: "Roger",
-  last_name: "Aaron",
+  first_name: "Vero",
+  last_name: "Kim",
   phone_number: "111-111-1111",
   password: "test"
 

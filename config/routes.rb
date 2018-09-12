@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete '/parents/:id', to: 'parents#destroy', as:'delete_parent'
 
   resources :children
+  delete '/children/:id', to: 'children#destroy', as:'delete_child'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
