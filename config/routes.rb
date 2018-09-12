@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :children
   delete '/children/:id', to: 'children#destroy', as:'delete_child'
   
+  resources :classrooms
+    delete '/classrooms/:id', to: 'classrooms#destroy', as:'delete_classroom'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

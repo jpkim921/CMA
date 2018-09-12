@@ -1,0 +1,18 @@
+
+<table>
+  <tbody>
+    <tr>
+      <td>Class Name</td>
+      <td>Teacher</td>
+      <td>Age Range</td>
+      <td>Number of Students</td>
+    </tr>
+    <% @classrooms.each do |classroom| %>
+      <tr>
+        <td><%= classroom.name %></td>
+        <td><%= classroom.teacher_name %></td>
+        <td><%= classroom.age_low %> - <%= classroom.age_high %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
