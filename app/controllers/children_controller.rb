@@ -46,6 +46,8 @@ class ChildrenController < ApplicationController
   def update
         
     if @child.update(child_params)
+      @child.assign_classroom
+      @child.save
       redirect_to parent_path(@child.parent)
     else
       render :edit
