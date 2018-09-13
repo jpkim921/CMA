@@ -13,7 +13,8 @@ class Child < ActiveRecord::Base
     
   def assign_classroom
     Classroom.all.each do |classroom|
-      if classroom.age_range.include?(self.age)
+#       the class size is set to 3 for demonstration
+      if classroom.class_size < 3 && classroom.age_range.include?(self.age)
         self.classroom = classroom
       end
     end

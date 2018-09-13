@@ -8,5 +8,8 @@ class Classroom < ActiveRecord::Base
     (self.age_low..self.age_high)
   end
   
+  def class_size
+    self.children.count
+  end
   
 end
