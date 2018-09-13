@@ -1,0 +1,22 @@
+classroom name   |   age range
+teacher in charge
+
+<h2><%= @classroom.name %></h2>
+<h3><%= age_range(@classroom) %></h3>
+
+
+<table border="0" cellpadding="10">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Parent Contact</th>
+  </tr>
+  
+  <%  @classroom.children.each do |child| %>
+    <tr>
+      <td><%= child.last_name %>,</td>
+      <td><%= child.first_name %></td>
+      <td><%= link_to name(child.parent), parent_path(child.parent) %></td>
+    </tr>
+  <% end %>
+</table>

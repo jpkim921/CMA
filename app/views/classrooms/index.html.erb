@@ -9,7 +9,7 @@
     </tr>
     <% @classrooms.each do |classroom| %>
       <tr>
-        <td><%= classroom.name %></td>
+        <td><%= link_to classroom.name, classroom_path(classroom) %></td>
         <td><%= classroom.teacher_name %></td>
         <td><%= classroom.age_low %> - <%= classroom.age_high %></td>
       </tr>
