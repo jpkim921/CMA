@@ -1,0 +1,14 @@
+<%= form_for @classroom do |f| %>
+  <%= f.text_field :name, placeholder: "Classroom Name" %>
+  <br><br>
+  <%= f.text_field :teacher_name, placeholder: "Teacher Name" %>
+  <br><br>
+  Classroom Age Range:
+  <%= f.number_field :age_low %> to <%= f.number_field :age_high %>
+
+  <br><br>
+  <%= f.submit %>
+<% end %>
+<br><br>
+<hr>
+<%= link_to "Cancel", root_path %>
