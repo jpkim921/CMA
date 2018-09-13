@@ -26,7 +26,17 @@ class ClassroomsController < ApplicationController
   def edit
   end
   
-  def update    
+  def update
+    if @classroom.update(classroom_params)
+      redirect_to classrooms_path
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @classroom.destroy
+    redirect_to classrooms_path
   end
   
   

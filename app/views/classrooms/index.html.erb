@@ -12,6 +12,9 @@
         <td><%= link_to classroom.name, classroom_path(classroom) %></td>
         <td><%= classroom.teacher_name %></td>
         <td><%= classroom.age_low %> - <%= classroom.age_high %></td>
+        <td>PLACEHOLDER</td>
+        <td><%= link_to "Edit", edit_classroom_path(classroom) %></td>
+        <td><%= link_to "Delete", classroom, method: :delete, data: { confirm: "Confirm Deletion" } %></td>
       </tr>
     <% end %>
   </tbody>
