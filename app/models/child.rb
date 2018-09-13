@@ -10,5 +10,12 @@ class Child < ActiveRecord::Base
   def age
     ((Time.zone.now - self.dob.to_time) / 1.year.seconds).floor
   end
-  
+    
+  def assign_classroom
+    Classroom.all.each do |classroom|
+      if classroom.age_range.include?(self.age)
+        self.classroom = classroom
+      end
+    end
+  end  
 end

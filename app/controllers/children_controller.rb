@@ -26,8 +26,10 @@ class ChildrenController < ApplicationController
   def create
     @parent = Parent.find(session[:parent_id])
     @child = @parent.children.build(child_params)
+#     binding.pry
+    @child.assign_classroom
 
-    if @child.save
+    if @child.save      
       redirect_to parent_path(@parent)
     else
       render :new

@@ -5,7 +5,7 @@ class Classroom < ActiveRecord::Base
   
   
   def age_range
-    [self.age_low..self.age_high]
+    (self.age_low..self.age_high)
   end
   
   
