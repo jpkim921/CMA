@@ -8,6 +8,11 @@ class ParentsController < ApplicationController
 
   def show
     # @parent = Parent.find(params[:id])
+    # binding.pry
+    if session[:parent_id] != @parent.id
+      flash[:notice] = "Please login to view your account."
+      redirect_to login_path
+    end
   end
 
   def new
