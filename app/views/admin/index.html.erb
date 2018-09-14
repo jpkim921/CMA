@@ -1,5 +1,7 @@
 
 <h2>Admin Page</h2>
+ <%= link_to "Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post %>
+<br><br>
 
 <table>
   <tr><td><%= link_to "List of Classrooms", admin_classrooms_path %></td></tr>

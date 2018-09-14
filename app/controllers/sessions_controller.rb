@@ -14,9 +14,15 @@ class SessionsController < ApplicationController
 
     if authorized_parent #will be nil or true or false
       session[:parent_id] = authorized_parent.id
-      flash[:notice] = "Logged in."
+      session[:admin] = authorized_parent.admin
+      
+      if session[:admin]
+        redirect_to admin_index_path
+      else
+        flash[:notice] = "Logged in."
+        redirect_to parent_path(authorized_parent)
+      end
 
-      redirect_to parent_path(authorized_parent)
     else
       flash.now[:notice] = "Invalid login."
       render 'new'
