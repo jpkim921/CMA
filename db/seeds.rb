@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+admin = Parent.create(first_name: "Admin", last_name: "Admin", phone_number: "000-000-0000", password: "test", admin: true)
+
 parent = {
   first_name: "Vero",
   last_name: "Kim",
