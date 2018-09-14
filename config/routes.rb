@@ -14,7 +14,18 @@ Rails.application.routes.draw do
   
   resources :classrooms
   delete '/classrooms/:id', to: 'classrooms#destroy', as:'delete_classroom'
+  
+#   resources :admin do
+#     resources :parents
+#     resources :children
+#     resources :classrooms
+#   end
 
+  resources :admin, only: [:index]
+  get '/admin/classrooms', to: 'classrooms#index', as: 'admin_classrooms'
+  get '/admin/parents', to: 'parents#index', as: 'admin_parents'
+  get '/admin/children', to: 'children#index', as: 'admin_children'
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
