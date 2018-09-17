@@ -1,9 +1,11 @@
 class ParentsController < ApplicationController
+  before_action :check_if_admin
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
   before_action :check_for_login, only: [:show]
 
   def index
-    @parents = Parent.all
+#     @parents = Parent.all
+    @parents = Parent.where(admin: false)
   end
 
   def show

@@ -19,13 +19,14 @@
 
 
 <h3>Registered Child/Children</h3>
-<div><%= link_to "Add Child", new_child_path %></div>
+<!-- <div><%= link_to "Add Child", new_child_path %></div> -->
+<div><%= link_to "Add Child", new_parent_child_path(@parent) %></div>
 
 <table>
   <tbody>
     <% @parent.children.each do |child| %>
     <tr>
-      <td><li><%= link_to name(child), child_path(child) %></li></td>
+      <td><li><%= link_to name(child), parent_child_path(@parent, child) %></li></td>
       <td>Age: <%= child.age %></td>
       <td><%= link_to "Edit", edit_child_path(child) %></td>
       <td><%= link_to "Delete", child, method: :delete, data: { confirm: "Confirm Deletion" } %>

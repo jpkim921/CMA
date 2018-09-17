@@ -1,4 +1,5 @@
 class ClassroomsController < ApplicationController
+  before_action :check_if_admin
   before_action :set_classroom, only: [:show, :edit, :update, :destroy]
   
   def index

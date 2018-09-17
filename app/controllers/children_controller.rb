@@ -1,4 +1,5 @@
 class ChildrenController < ApplicationController
+  before_action :check_if_admin
   before_action :set_child, only: [:show, :edit, :update, :destroy]
 
   def index

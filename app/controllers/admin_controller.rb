@@ -5,8 +5,5 @@ class AdminController < ApplicationController
   end
   
   
-  def destroy
-    
-  end
-  
+
 end
