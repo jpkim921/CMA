@@ -18,8 +18,9 @@ class ApplicationController < ActionController::Base
   end
   
   def check_if_admin
-    unless session[:admin]
+    unless session[:admin] == true
       flash[:notice] = "Need admin access"
+      redirect_to login_path
     end
   end
   

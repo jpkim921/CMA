@@ -1,5 +1,5 @@
 class ParentsController < ApplicationController
-  before_action :check_if_admin
+  before_action :check_if_admin, only: [:index]
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
   before_action :check_for_login, only: [:show]
 
@@ -8,10 +8,21 @@ class ParentsController < ApplicationController
     @parents = Parent.where(admin: false)
   end
 
+#   def show
+#     # @parent = Parent.find(params[:id])
+#     # binding.pry
+#     if session[:parent_id] != @parent.id
+#       flash[:notice] = "Please login to view your account."
+#       redirect_to login_path
+#     end
+#   end  
+  
   def show
     # @parent = Parent.find(params[:id])
     # binding.pry
-    if session[:parent_id] != @parent.id
+    if session[:parent_id] == @parent.id || session[:admin]
+      render :show
+    else
       flash[:notice] = "Please login to view your account."
       redirect_to login_path
     end
