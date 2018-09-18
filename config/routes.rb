@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  resources :parents
+  resources :parents do
+    resources :children, only: [:new, :create, :show]
+  end
+  
   delete '/parents/:id', to: 'parents#destroy', as:'delete_parent'
 
   resources :children

@@ -1,4 +1,5 @@
 class ClassroomsController < ApplicationController
+  before_action :check_if_admin, only: [:index, :new, :edit, :update, :destroy]
   before_action :set_classroom, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -10,6 +11,7 @@ class ClassroomsController < ApplicationController
   end
   
   def new
+#     binding.pry
     @classroom = Classroom.new
   end
   
