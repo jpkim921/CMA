@@ -5,5 +5,4 @@ class AdminController < ApplicationController
 #     binding.pry
   end
 
-
 end

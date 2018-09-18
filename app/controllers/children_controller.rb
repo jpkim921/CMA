@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-  before_action :check_if_admin
+  before_action :check_if_admin, only: [:index]
   before_action :set_child, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -45,7 +45,8 @@ class ChildrenController < ApplicationController
       render :show
     else
       # flash[:notice] = "Not your child."
-      redirect_to child_path(@child)
+      # redirect_to child_path(@child)
+      redirect_to parent_path(@child.parent)
       # render '/parents/show'
     end
   end
@@ -59,7 +60,12 @@ class ChildrenController < ApplicationController
     if @child.update(child_params)
       @child.assign_classroom
       @child.save
-      redirect_to parent_path(@child.parent)
+
+      if session[:admin]
+        redirect_to children_path
+      else
+        redirect_to parent_path(@child.parent)
+      end
     else
       render :edit
     end

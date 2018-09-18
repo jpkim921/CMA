@@ -9,14 +9,22 @@
 admin = Parent.create(first_name: "Admin", last_name: "Admin", phone_number: "000-000-0000", password: "test", admin: true)
 
 parent = {
-  first_name: "Vero",
-  last_name: "Kim",
-  phone_number: "111-111-1111",
-  password: "test"
+  parent_1: {
+    first_name: "Vero",
+    last_name: "Kim",
+    phone_number: "111-111-1111",
+    password: "test"
+  },
+  parent_2: {
+    first_name: "Luis",
+    last_name: "Fonsi",
+    phone_number: "111-111-1112",
+    password: "test"
+  }
 }
 
-Parent.create(parent)
-
+parent.each {|k,v| Parent.create(v)}
+# Parent.create(parent)
 
 cr = {
   classroom_1: {

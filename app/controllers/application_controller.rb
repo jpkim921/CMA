@@ -16,24 +16,13 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
-<<<<<<< HEAD
 
   def check_if_admin
-    unless session[:admin]
-=======
-  
-  def check_if_admin
     unless session[:admin] == true
->>>>>>> nested_resources
       flash[:notice] = "Need admin access"
       redirect_to login_path
     end
   end
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> nested_resources
 
 
 end
