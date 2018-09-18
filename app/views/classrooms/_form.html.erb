@@ -1,4 +1,7 @@
 <%= form_for @classroom do |f| %>
+  
+   <%= error_messages(f.object) %>
+
   <%= f.text_field :name, placeholder: "Classroom Name" %>
   <br><br>
   <%= f.text_field :teacher_name, placeholder: "Teacher Name" %>
