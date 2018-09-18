@@ -32,7 +32,7 @@ class ChildrenController < ApplicationController
 #     binding.pry
     @child.assign_classroom
 
-    if @child.save      
+    if @child.save
       redirect_to parent_path(@parent)
     else
       render :new
@@ -40,6 +40,13 @@ class ChildrenController < ApplicationController
   end
 
   def show
+    if session[:parent_id] == @child.parent.id || session[:admin]
+      render :show
+    else
+      # flash[:notice] = "Not your child."
+      redirect_to child_path(@child)
+      # render '/parents/show'
+    end
   end
 
   def edit
@@ -47,7 +54,7 @@ class ChildrenController < ApplicationController
   end
 
   def update
-        
+
     if @child.update(child_params)
       @child.assign_classroom
       @child.save
@@ -64,17 +71,17 @@ class ChildrenController < ApplicationController
   end
 
 
-  
-  
+
+
   private
 
   def set_child
     @child = Child.find(params[:id])
   end
-  
+
   def child_params
     params.require(:child).permit(:first_name, :last_name, :dob)
   end
-  
-      
+
+
 end
