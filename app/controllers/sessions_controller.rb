@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     if authorized_parent #will be nil or true or false
       session[:parent_id] = authorized_parent.id
       session[:admin] = authorized_parent.admin
-      
+
       if session[:admin]
         redirect_to admin_index_path
       else
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
     else
       session[:parent_id] = nil
     end
-    
+
     redirect_to root_path
   end
 
