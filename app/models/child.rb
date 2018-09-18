@@ -4,13 +4,13 @@ class Child < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  
-  
-  
+
+
+
   def age
     ((Time.zone.now - self.dob.to_time) / 1.year.seconds).floor
   end
-    
+
   def assign_classroom
     Classroom.all.each do |classroom|
 #       the class size is set to 3 for demonstration
@@ -18,5 +18,7 @@ class Child < ActiveRecord::Base
         self.classroom = classroom
       end
     end
-  end  
+  end
+
+
 end
