@@ -7,17 +7,17 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
   resources :parents do
-    resources :children, only: [:new, :create, :show]
+    resources :children, only: [:new, :show, :edit]
   end
-  
+
   delete '/parents/:id', to: 'parents#destroy', as:'delete_parent'
 
   resources :children
   delete '/children/:id', to: 'children#destroy', as:'delete_child'
-  
+
   resources :classrooms
   delete '/classrooms/:id', to: 'classrooms#destroy', as:'delete_classroom'
-  
+
 #   resources :admin do
 #     resources :parents
 #     resources :children
@@ -28,8 +28,8 @@ Rails.application.routes.draw do
   get '/admin/classrooms', to: 'classrooms#index', as: 'admin_classrooms'
   get '/admin/parents', to: 'parents#index', as: 'admin_parents'
   get '/admin/children', to: 'children#index', as: 'admin_children'
-  
-  
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

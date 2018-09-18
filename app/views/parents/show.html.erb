@@ -28,7 +28,7 @@
     <tr>
       <td><li><%= link_to name(child), parent_child_path(@parent, child) %></li></td>
       <td>Age: <%= child.age %></td>
-      <td><%= link_to "Edit", edit_child_path(child) %></td>
+      <td><%= link_to "Edit", edit_parent_child_path(@parent, child) %></td>
       <td><%= link_to "Delete", child, method: :delete, data: { confirm: "Confirm Deletion" } %>
 </td>
     </tr>

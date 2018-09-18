@@ -8,8 +8,9 @@ class ChildrenController < ApplicationController
 
 
   def new
-    @child = Child.new
+    # @child = Child.new
     @parent = Parent.find(session[:parent_id])
+    @child = Child.new(parent_id: params[:parent_id])
   end
 
   # def create
@@ -28,9 +29,10 @@ class ChildrenController < ApplicationController
 
 
   def create
-    @parent = Parent.find(session[:parent_id])
+
+    @parent = Parent.find(params[:child][:parent_id])
     @child = @parent.children.build(child_params)
-#     binding.pry
+    # binding.pry
     @child.assign_classroom
 
     if @child.save
@@ -87,7 +89,7 @@ class ChildrenController < ApplicationController
   end
 
   def child_params
-    params.require(:child).permit(:first_name, :last_name, :dob)
+    params.require(:child).permit(:first_name, :last_name, :dob, :parent_id)
   end
 
 

@@ -1,4 +1,7 @@
 <%= form_for @child do |f| %>
+
+  <%= f.hidden_field :parent_id %>
+
   <%= f.text_field :first_name, placeholder: "First Name" %>
   <%= f.text_field :last_name, placeholder: "Last Name" %>
   <br><br>
@@ -10,4 +13,3 @@
 <br><br>
 <hr>
 <%= link_to "Cancel", parent_path(@parent) %>
-
