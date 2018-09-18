@@ -16,7 +16,14 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
-  
+
+  def check_if_admin
+    unless session[:admin]
+      flash[:notice] = "Need admin access"
+      redirect_to login_path
+    end
+  end
+
 
 
 end
