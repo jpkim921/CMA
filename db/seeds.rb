@@ -13,13 +13,16 @@ parent = {
     first_name: "Vero",
     last_name: "Kim",
     phone_number: "111-111-1111",
-    password: "test"
+    password: "test",
+    email: "vero@test.com"
   },
   parent_2: {
     first_name: "Luis",
     last_name: "Fonsi",
     phone_number: "111-111-1112",
-    password: "test"
+    password: "test",
+    email: "Luis@test.com"
+
   }
 }
 
