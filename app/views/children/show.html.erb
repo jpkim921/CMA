@@ -6,4 +6,4 @@
 
 <!-- <h3>Classroom: <%= @child.classroom.name if @child.classroom %></h3> -->
 <h3>Teacher: <%= @child.classroom.teacher_name if @child.classroom %></h3>
-<h3>Classroom: <%= display_classroom_name(@child) %></h3>
+<h3>Classroom: <%= link_to display_classroom_name(@child), classroom_path(@child.classroom) %></h3>
