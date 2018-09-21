@@ -1,4 +1,5 @@
-<div><%= link_to "Back to List", classrooms_path %></div>
+<!-- <div><%= link_to "Back to Classroom List", classrooms_path if session[:admin] %></div><br> -->
+<div><%= link_to "Back to Classroom List", back_to_homepage %></div>
 
 <h2><%= @classroom.name %></h2>
 <h3><%= age_range(@classroom) %></h3>
@@ -10,7 +11,7 @@
     <th>Last Name</th>
     <th>Parent Contact</th>
   </tr>
-  
+
   <%  @classroom.children.each do |child| %>
     <tr>
       <td><%= child.last_name %>,</td>
