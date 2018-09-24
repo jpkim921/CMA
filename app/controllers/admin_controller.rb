@@ -5,4 +5,8 @@ class AdminController < ApplicationController
 #     binding.pry
   end
 
+  # def show
+  #   redirect_to admin_index_path
+  # end
+
 end

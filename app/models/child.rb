@@ -20,5 +20,4 @@ class Child < ActiveRecord::Base
     end
   end
 
-
 end
