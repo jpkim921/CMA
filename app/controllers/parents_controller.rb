@@ -19,7 +19,7 @@ class ParentsController < ApplicationController
 
   def show
     # @parent = Parent.find(params[:id])
-    # binding.pry
+    binding.pry
     if session[:parent_id] == @parent.id || session[:admin]
       render :show
     else

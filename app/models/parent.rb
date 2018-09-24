@@ -6,7 +6,17 @@ class Parent < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :phone_number, uniqueness: true
+  # validates :phone_number, uniqueness: true
+
+
+  validate :phone_number_check
+
+  def phone_number_check
+    if phone_number == ""
+      errors.add(:phone_number, "Need to enter phone number.")
+    end
+  end
+
 
   def name
     "#{self.first_name} #{self.last_name}"
