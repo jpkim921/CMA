@@ -1,4 +1,13 @@
 
+<h5>Filter Classroom</h5>
+
+<%= form_tag("/classrooms", method: "get") do %>
+  <%= select_tag "date", options_for_select(["< 5", "< 10"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<br><br>
+
 <div><%= link_to "Add Classroom", new_classroom_path %></div>
 <br>
 

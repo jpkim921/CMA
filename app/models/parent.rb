@@ -22,4 +22,8 @@ class Parent < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+  def self.order_by_last_name
+    self.order(:last_name)[1..-1]
+  end
+
 end

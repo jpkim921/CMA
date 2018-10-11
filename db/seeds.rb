@@ -22,7 +22,34 @@ parent = {
     phone_number: "111-111-1112",
     password: "test",
     email: "Luis@test.com"
-
+  },
+  parent_3: {
+    first_name: "John",
+    last_name: "Smith",
+    phone_number: "111-111-1113",
+    password: "test",
+    email: "JohnSmith@test.com"
+  },
+  parent_4: {
+    first_name: "Al",
+    last_name: "Bundy",
+    phone_number: "111-111-1114",
+    password: "test",
+    email: "AlBundy@test.com"
+  },
+  parent_5: {
+    first_name: "Leela",
+    last_name: "Turanga",
+    phone_number: "111-111-1115",
+    password: "test",
+    email: "LeelaTuranga@test.com"
+  },
+  parent_6: {
+    first_name: "Homer",
+    last_name: "Simpson",
+    phone_number: "111-111-1116",
+    password: "test",
+    email: "HomerSimpson@test.com"
   }
 }
 
