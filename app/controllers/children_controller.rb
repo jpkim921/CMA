@@ -79,7 +79,10 @@ class ChildrenController < ApplicationController
     redirect_to parent_path(@child.parent)
   end
 
-
+  def allergy
+    @children = Child.children_with_allegies
+    render :allergy
+  end
 
 
   private

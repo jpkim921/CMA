@@ -20,4 +20,8 @@ class Child < ActiveRecord::Base
     end
   end
 
+  def self.children_with_allegies
+    where(allergy: true)
+  end
+
 end
