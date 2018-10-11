@@ -20,4 +20,12 @@ module ChildrenHelper
     end
   end
 
+  def allergy?(child)
+    if child.allergy
+      "Child has an allergy."
+    else
+      "Child has no allergies."
+    end
+  end
+
 end

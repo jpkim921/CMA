@@ -4,6 +4,8 @@
 
 <h3>DOB: <%= display_dob(@child.dob) %></h3>
 
+<h4><%= allergy?(@child) %></h4>
+
 <!-- <h3>Classroom: <%= @child.classroom.name if @child.classroom %></h3> -->
 <h3>Teacher: <%= @child.classroom.teacher_name if @child.classroom %></h3>
 <h3>Classroom: <%= link_to display_classroom_name(@child), classroom_path(@child.classroom) %></h3>
