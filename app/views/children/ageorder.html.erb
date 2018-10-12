@@ -1,0 +1,24 @@
+<strong>order page for assessment</strong>
+
+
+<h4>Sort by Ascending or Descending Age</h4>
+<%= form_tag("/child/ageorder", method: "get") do %>
+  <%= select_tag "ageorder", options_for_select(["ASC", "DSC"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<table>
+  <tbody>
+
+<br><br>
+    <% @children.each do |child| %>
+    <tr>
+      <td><li><%= link_to name(child), child_path(child) %></li></td>
+      <td>Age: <%= child.age %></td>
+      <td><%= link_to "Edit", edit_child_path(child) %></td>
+      <td><%= link_to "Delete", child, method: :delete, data: { confirm: "Confirm Deletion" } %></td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>

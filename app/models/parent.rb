@@ -23,7 +23,7 @@ class Parent < ActiveRecord::Base
   end
 
   def self.order_by_last_name
-    self.order(:last_name)[1..-1]
+    order(:last_name)
   end
 
 end

@@ -82,6 +82,22 @@ class ChildrenController < ApplicationController
   def allergy
     @children = Child.children_with_allegies
     render :allergy
+  end 
+  
+  def ageorder
+    
+    if !params[:ageorder].blank?
+      if params[:ageorder] == "DSC"
+        @children = Child.order_by_age
+      elsif params[:ageorder] == "ASC"
+        @children = Child.order_by_age.reverse
+      end
+    else
+      # if no filters are applied, show all classrooms
+    @children = Child.order_by_age
+    end
+      
+      
   end
 
 

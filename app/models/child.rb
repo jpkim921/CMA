@@ -24,4 +24,9 @@ class Child < ActiveRecord::Base
     where(allergy: true)
   end
 
+  
+  def self.order_by_age
+    order(:dob)
+  end
+  
 end
