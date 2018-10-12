@@ -33,7 +33,7 @@ module ParentsHelper
 #   end
 
   def phone_number(parent)
-    if parent.phone_number == ""
+    if parent.phone_number == "" || parent.phone_number == nil
       "Need PHONE NUMBER!"
     else
       phone_number = parent.phone_number.gsub!('-','')
