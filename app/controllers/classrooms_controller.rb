@@ -10,17 +10,21 @@ class ClassroomsController < ApplicationController
     if !params[:date].blank?
       if params[:date] == "< 5"
         @classrooms = Classroom.less_than_five
+        render json: @classrooms
       elsif params[:date] == "< 10"
         @classrooms = Classroom.less_than_ten
+        render json: @classrooms
       end
     else
       # if no filters are applied, show all classrooms
       @classrooms = Classroom.all
+      render json: @classrooms
     end
   end
 
   def show
     @classroom = Classroom.find(params[:id])
+    render json: @classroom
   end
 
   def new

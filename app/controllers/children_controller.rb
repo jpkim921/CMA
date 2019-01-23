@@ -4,6 +4,7 @@ class ChildrenController < ApplicationController
 
   def index
     @children = Child.all
+    render json: @children
   end
 
 
@@ -44,7 +45,9 @@ class ChildrenController < ApplicationController
 
   def show
     if session[:parent_id] == @child.parent.id || session[:admin]
-      render :show
+      # render :show
+      render json: @child
+
     else
       # flash[:notice] = "Not your child."
       # redirect_to child_path(@child)

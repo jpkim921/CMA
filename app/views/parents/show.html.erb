@@ -2,7 +2,7 @@
     <div class="flash <%= key %>"><%= value %></div>
 <% end %>
 
-<h3><%= name(@parent) %></h3>
+<h3><%= name(@parent) %> <%= session[:parent_id] %></h3>
 
 <div class="">
   <strong>Phone Number: </strong><%= phone_number(@parent) %>
@@ -39,3 +39,8 @@
 <br>
 
 <%= link_to "Back to Main Page", admin_index_path if session[:admin] %>
+
+
+<div class="result">
+
+</div>

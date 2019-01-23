@@ -4,8 +4,10 @@
 <br><br>
 
 <table>
-  <tr><td><%= link_to "List of Classrooms", admin_classrooms_path %></td></tr>
-  <tr><td><%= link_to "List of Parents", admin_parents_path %></td></tr>
-  <tr><td><%= link_to "List of Children", admin_children_path %></td></tr>
+  <tr><td><%= link_to "List of Classrooms", admin_classrooms_path, :'attr-classrooms' => 'classrooms' %></td></tr>
+  <tr><td><%= link_to "List of Parents", admin_parents_path, :'attr-parents' => 'parents' %></td></tr>
+  <tr><td><%= link_to "List of Children", admin_children_path, :'attr-children' => 'children' %></td></tr>
 </table>
 
+
+<div id="results"></div>

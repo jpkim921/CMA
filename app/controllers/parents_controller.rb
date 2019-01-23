@@ -6,6 +6,7 @@ class ParentsController < ApplicationController
   def index
 #     @parents = Parent.all
     @parents = Parent.where(admin: false)
+    render json: @parents
   end
 
 #   def show
@@ -21,7 +22,8 @@ class ParentsController < ApplicationController
     # @parent = Parent.find(params[:id])
     # binding.pry
     if session[:parent_id] == @parent.id || session[:admin]
-      render :show
+      # render :show
+      render json: @parent
     else
       flash[:notice] = "Please verify to view account."
       redirect_to login_path
