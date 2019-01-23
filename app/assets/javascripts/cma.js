@@ -14,6 +14,7 @@ $(document).ready(function() {
         $.get(url, classroomsResults)
       } else if (query === 'parents') {
         console.log('PARENTS INDEX')
+        $.get(url, parentsResults)
       } else if (query === 'children') {
         console.log('CHILDREN INDEX')
       }
@@ -34,4 +35,15 @@ var classroomsResults = (data) => {
 
     )
   })
+}
+
+// populate div#results with parents index
+var parentsResults = (data) => {
+
+  data.forEach((parent) => {
+    console.log(parent)
+    var parent_name = parent.first_name + ' ' + parent.last_name
+    var baseURL = 'https://localhost:3000/parents/'
+    $('#results').append('<li><a href='+ baseURL + parent.id + '>' + parent_name + '</a></li>')
+  });
 }
