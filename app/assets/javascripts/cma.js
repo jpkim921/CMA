@@ -58,12 +58,39 @@ var childrenResults = (data) => {
     var age = Date.now() - timeStamp(child.dob);
     console.log(age)
     var baseURL = 'https://localhost:3000/admin/children/'
-    $('#children_index').append('<tr><td><a href='+ baseURL + child.id + '>' + child_name + '</a></td><td>' + child.dob + '</td><td>TEST</td><td>TEST</td><td>TEST</td></tr>')
+    $('#children_index').append('<tr><td><a href='+ baseURL + child.id + '>' + child_name + '</a></td><td>' + getChildAge(child.dob) + '</td><td>TEST</td><td>TEST</td><td>TEST</td></tr>')
   });
 }
 
 
+// to convert child age from Ruby to use with JS
+
+// changes string date to timestamp
 var timeStamp = (stringDate) => {
   var datum = Date.parse(stringDate);
   return datum;
+}
+//converts to human readable time format
+var timeConverter = (UNIX_timestamp)=> {
+  var a = new Date(UNIX_timestamp);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
+}
+
+var getChildAge = (dob) => {
+  var dobConvert = timeStamp(dob)
+  var dateNow = Date.now()
+  var diff = dateNow - dobConvert
+
+  var jsTime = new Date(timeConverter(diff))
+
+  return jsTime.getFullYear() - 1970
+
 }
