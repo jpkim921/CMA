@@ -32,7 +32,14 @@ var classroomsResults = (data) => {
   data.forEach((classroom) => {
     console.log(classroom)
     var baseURL = 'https://localhost:3000/admin/classrooms/'
-    $('#classrooms_index').append('<tr><td><a href='+'"https://localhost:3000/classrooms/' + classroom.id + '">' + classroom.name + '</a></td><td>TEST</td><td>TEST</td><td>TEST</td><td>TEST</td></tr>')
+    var className = classroom.name;
+    var classTeacher = classroom.teacher_name;
+    var classAgeRange = classroom.age_low + " - " + classroom.age_high;
+    var numOfStudents = classroom.children.length
+    var editURL = '<a href="https://localhost:3000/classrooms/' + classroom.id + '/edit">Edit</a>'
+    var deleteURL = '<a data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="https://localhost:3000/classrooms/' + classroom.id + '">Delete</a>'
+
+    $('#classrooms_index').append('<tr><td><a href='+'"https://localhost:3000/classrooms/' + classroom.id + '">' + className + '</a></td><td>' + classTeacher + '</td><td>' + classAgeRange + '</td><td>' + numOfStudents + '</td><td>' + editURL + '</td><td>' + deleteURL + '</td></tr>')
   });
 }
 
@@ -57,8 +64,13 @@ var childrenResults = (data) => {
     var child_name = child.first_name + ' ' + child.last_name
     var age = Date.now() - timeStamp(child.dob);
     console.log(age)
-    var baseURL = 'https://localhost:3000/admin/children/'
-    $('#children_index').append('<tr><td><a href='+ baseURL + child.id + '>' + child_name + '</a></td><td>' + getChildAge(child.dob) + '</td><td>TEST</td><td>TEST</td><td>TEST</td></tr>')
+    var baseURL = 'https://localhost:3000/children/'
+    var editURL = '<a href="https://localhost:3000/children/' + child.id + '/edit">Edit</a>'
+    var deleteURL = '<a data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="https://localhost:3000/children/' + child.id + '">Delete</a>'
+    // '<a data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="/children/3">Delete</a>'
+
+    console.log(deleteURL)
+    $('#children_index').append('<tr><td><a href='+ baseURL + child.id + '>' + child_name + '</a></td><td>' + getChildAge(child.dob) + '</td><td>' + editURL + '</td><td>' + deleteURL + '</td></tr>')
   });
 }
 
@@ -72,14 +84,14 @@ var timeStamp = (stringDate) => {
 }
 //converts to human readable time format
 var timeConverter = (UNIX_timestamp)=> {
-  var a = new Date(UNIX_timestamp);
+  var time = new Date(UNIX_timestamp);
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
+  var year = time.getFullYear();
+  var month = months[time.getMonth()];
+  var date = time.getDate();
+  var hour = time.getHours();
+  var min = time.getMinutes();
+  var sec = time.getSeconds();
   var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
   return time;
 }
