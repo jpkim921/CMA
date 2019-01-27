@@ -27,7 +27,7 @@ var showClassroom = (classroom) => {
   $('#results').append('<h2>' + className + '</h2>')
   $('#results').append('<h3>' + classAgeRange + '</h3>')
   $('#results').append('<table id="classroom_index"><tbody><tr><th>First Name</th><th>Last Name</th><th>Parent Contact</th></tr></tbody></table>')
-  debugger;
+  // debugger;
   $('#classroom_index').append(listClassroomChildren(classroom.children));
 
 }
