@@ -8,7 +8,7 @@ $(document).ready(function() {
       var url = this.href;
       var query;
       query = url.substring('https://localhost:3000/admin/'.length)
-      // console.log(query)
+      console.log(query)
 
       if (query === 'classrooms') {
         $.get(url, classroomsResults)
@@ -51,7 +51,7 @@ var parentsResults = (data) => {
   data.forEach((parent) => {
     console.log(parent)
     var parent_name = parent.first_name + ' ' + parent.last_name
-    var baseURL = 'https://localhost:3000/admin/parents/'
+    var baseURL = 'https://localhost:3000/parents/'
     $('#results').append('<li><a href='+ baseURL + parent.id + '>' + parent_name + '</a></li>')
   });
 }

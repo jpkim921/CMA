@@ -7,8 +7,8 @@ var loadClassroom = () => {
       e.preventDefault();
       var url = this.href;
 
-      console.log("testing link")
-      console.log(url)
+      // console.log("testing link")
+      // console.log(url)
 
       $('#results').empty()
       $.get(url, showClassroom)
@@ -27,8 +27,8 @@ var showClassroom = (classroom) => {
   $('#results').append('<h2>' + className + '</h2>')
   $('#results').append('<h3>' + classAgeRange + '</h3>')
   $('#results').append('<table id="classroom_index"><tbody><tr><th>First Name</th><th>Last Name</th><th>Parent Contact</th></tr></tbody></table>')
-  // debugger;
-  // $('#classroom_index').append(listClassroomChildren(classroom.children));
+  debugger;
+  $('#classroom_index').append(listClassroomChildren(classroom.children));
 
 }
 
@@ -38,11 +38,13 @@ var ageRange = (classroom) => {
 
 var listClassroomChildren = (children) => {
   var htmlString = '';
-  // debugger
   children.forEach((child) => {
     var firstName = child.first_name;
     var lastName = child.last_name;
-    var parentContact = child.parent.first_name;
+    // var parentContact = child.parent.first_name;
+    // debugger
+    var parentContact = 'child.parent.first_name';
+    console.log(child.parent);
     htmlString += '<tr><td>' + firstName + '</td><td>' + lastName + '</td><td>' + parentContact + '</td></tr>'
 
     // $('#classroom_index').append('<tr><td>' + firstName + '</td><td>' + '<tr><td>' + lastName + '</td><td>' + parentContact + '</td></tr>')
