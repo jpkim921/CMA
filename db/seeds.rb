@@ -74,9 +74,11 @@ children = {
 children.each {|k,v| Child.create(v)}
 child1 = Child.all[0]
 child1.parent = Parent.all[1]
+child1.classroom = Classroom.all[1]
 child1.save
 child2 = Child.all[1]
 child2.parent = Parent.all[2]
+child2.classroom = Classroom.all[1]
 child2.save
 
 
