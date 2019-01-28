@@ -54,6 +54,8 @@ var parentsResults = (data) => {
     var baseURL = 'https://localhost:3000/parents/'
     $('#results').append('<li><a href='+ baseURL + parent.id + '>' + parent_name + '</a></li>')
   });
+
+  loadParent();
 }
 
 // populate div#results with children index
