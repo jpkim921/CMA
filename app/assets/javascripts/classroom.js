@@ -8,12 +8,10 @@ var loadClassroom = () => {
       var url = this.href;
 
       // console.log("testing link")
-      // console.log(url)
+      console.log(url)
 
       $('#results').empty()
       $.get(url, showClassroom)
-
-
     }
   );
 }
@@ -41,14 +39,10 @@ var listClassroomChildren = (children) => {
   children.forEach((child) => {
     var firstName = child.first_name;
     var lastName = child.last_name;
-    // var parentContact = child.parent.first_name;
-    // debugger
-    var parentContact = 'child.parent.first_name';
-    console.log(child.parent);
+    var parentContact = `${child.parent.first_name} ${child.parent.last_name}`;
+
+
     htmlString += '<tr><td>' + firstName + '</td><td>' + lastName + '</td><td>' + parentContact + '</td></tr>'
-
-    // $('#classroom_index').append('<tr><td>' + firstName + '</td><td>' + '<tr><td>' + lastName + '</td><td>' + parentContact + '</td></tr>')
-
 
   })
   return htmlString;

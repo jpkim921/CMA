@@ -56,22 +56,22 @@ parent = {
 parent.each {|k,v| Parent.create(v)}
 # Parent.create(parent)
 
-children = {
-  child_1: {
-    last_name: "Kim",
-    first_name: "Sam",
-    dob: "2015-01-26 00:00:00",
-    allergy: false
-  },
-  child_2: {
-  last_name: "Fonsi",
-  first_name: "LP",
-  dob: "2015-09-22 00:00:00",
-  allergy: true
-  }
-}
-
-children.each {|k,v| Child.create(v)}
+# children = {
+#   child_1: {
+#     last_name: "Kim",
+#     first_name: "Sam",
+#     dob: "2015-01-26 00:00:00",
+#     allergy: false
+#   },
+#   child_2: {
+#   last_name: "Fonsi",
+#   first_name: "LP",
+#   dob: "2015-09-22 00:00:00",
+#   allergy: true
+#   }
+# }
+#
+# children.each {|k,v| Child.create(v)}
 
 
 cr = {
@@ -99,11 +99,11 @@ cr.each do |k,v|
   Classroom.create(v)
 end
 
-child1 = Child.all[0]
-child2 = Child.all[1]
-child1.parent = Parent.all[1]
-child1.classroom = Classroom.all[0]
-child1.save
-child2.parent = Parent.all[2]
-child2.classroom = Classroom.all[0]
-child2.save
+# child1 = Child.all[0]
+# child2 = Child.all[1]
+# child1.parent = Parent.all[1]
+# child1.classroom = Classroom.all[0]
+# child1.save
+# child2.parent = Parent.all[2]
+# child2.classroom = Classroom.all[0]
+# child2.save
