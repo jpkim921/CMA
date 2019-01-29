@@ -3,7 +3,7 @@ console.log('classroom js test')
 
 
 var loadClassroom = () => {
-  $('#results a').on('click', function(e) {
+  $('#classrooms_index a').on('click', function(e) {
       e.preventDefault();
       var url = this.href;
 
@@ -48,26 +48,14 @@ var listClassroomChildren = (children) => {
   return htmlString;
 }
 
+var newClassroomForm = () => {
+  $('#add_classroom').on('click', function(e) {
+    e.preventDefault();
+    $('#results').empty();
+    $('#results').append('<h3>Create New Classroom</h3>');
+    $('#results').append('<form class="new_classroom" id="new_classroom" action="/classrooms" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ETHCfP3RfUA8UBQBIpkmAnrPetIrQk0nu0+DzLuYRnjeeZtl4M8u1Gl3pxVwk/Xw9U8pdrSkFGK319s79EOHow=="><input placeholder="Classroom Name" type="text" name="classroom[name]" id="classroom_name"><br><br><input placeholder="Teacher Name" type="text" name="classroom[teacher_name]" id="classroom_teacher_name"><br><br>Classroom Age Range:<input type="number" name="classroom[age_low]" id="classroom_age_low"> to <input type="number" name="classroom[age_high]" id="classroom_age_high"><br><br><input type="submit" name="commit" value="Create Classroom"></form>')
+  })
+}
 
 
-// dont need this part
-// <div><%= link_to "Back To Homepage", back_to_homepage %></div>
-
-// <h2><%= @classroom.name %></h2>
-// <h3><%= age_range(@classroom) %></h3>
-//
-// <table border="0" cellpadding="10">
-//   <tr>
-//     <th>First Name</th>
-//     <th>Last Name</th>
-//     <th>Parent Contact</th>
-//   </tr>
-//
-//   <%  @classroom.children.each do |child| %>
-//     <tr>
-//       <td><%= child.last_name %>,</td>
-//       <td><%= child.first_name %></td>
-//       <td><%= link_to name(child.parent), parent_path(child.parent) %></td>
-//     </tr>
-//   <% end %>
-// </table>
+'<form class="new_classroom" id="new_classroom" action="/classrooms" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ETHCfP3RfUA8UBQBIpkmAnrPetIrQk0nu0+DzLuYRnjeeZtl4M8u1Gl3pxVwk/Xw9U8pdrSkFGK319s79EOHow=="><input placeholder="Classroom Name" type="text" name="classroom[name]" id="classroom_name"><br><br><input placeholder="Teacher Name" type="text" name="classroom[teacher_name]" id="classroom_teacher_name"><br><br>Classroom Age Range:<input type="number" name="classroom[age_low]" id="classroom_age_low"> to <input type="number" name="classroom[age_high]" id="classroom_age_high"><br><br><input type="submit" name="commit" value="Create Classroom"></form>'

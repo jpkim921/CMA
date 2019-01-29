@@ -26,6 +26,8 @@ $(document).ready(function() {
 
 // populate div#results with classrooms index
 var classroomsResults = (data) => {
+  $('#results').append('<a id="add_classroom" href="/classrooms/new">Add Classroom</a>')
+
   // add the rows with column heading
   $('#results').append('<table id="classrooms_index"><tbody><tr><th>Class Name</th><th>Teacher</th><th>Age Range</th><th>Number of Students</th></tr></tbody></table>')
 
@@ -43,6 +45,7 @@ var classroomsResults = (data) => {
   });
 
   loadClassroom();
+  newClassroomForm();
 }
 
 // populate div#results with parents index
