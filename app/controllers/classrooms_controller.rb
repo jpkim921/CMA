@@ -36,7 +36,8 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.create(classroom_params)
 
     if @classroom.save
-      redirect_to classrooms_path
+      # redirect_to classrooms_path
+      render json: @classroom, status: 201
     else
       render :new
     end

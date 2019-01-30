@@ -38,14 +38,14 @@ var classroomsResults = (data) => {
     var classTeacher = classroom.teacher_name;
     var classAgeRange = classroom.age_low + " - " + classroom.age_high;
     var numOfStudents = classroom.children.length
-    var editURL = '<a href="https://localhost:3000/classrooms/' + classroom.id + '/edit">Edit</a>'
-    var deleteURL = '<a data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="https://localhost:3000/classrooms/' + classroom.id + '">Delete</a>'
+    var editURL = '<a attr-edit="edit" href="https://localhost:3000/classrooms/' + classroom.id + '/edit">Edit</a>'
+    var deleteURL = '<a attr-delete="delete" data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="https://localhost:3000/classrooms/' + classroom.id + '">Delete</a>'
 
     $('#classrooms_index').append('<tr><td><a href='+'"https://localhost:3000/classrooms/' + classroom.id + '">' + className + '</a></td><td>' + classTeacher + '</td><td>' + classAgeRange + '</td><td>' + numOfStudents + '</td><td>' + editURL + '</td><td>' + deleteURL + '</td></tr>')
   });
 
   loadClassroom();
-  newClassroomForm();
+  loadClassroomForm();
 }
 
 // populate div#results with parents index

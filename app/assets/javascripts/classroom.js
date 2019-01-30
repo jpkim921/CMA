@@ -1,6 +1,6 @@
 console.log('classroom js test')
 
-
+// $('a[attr-edit="edit"]')
 
 var loadClassroom = () => {
   $('#classrooms_index a').on('click', function(e) {
@@ -10,7 +10,7 @@ var loadClassroom = () => {
       // console.log("testing link")
       console.log(url)
 
-      $('#results').empty()
+      // $('#results').empty()
       $.get(url, showClassroom)
     }
   );
@@ -18,6 +18,8 @@ var loadClassroom = () => {
 
 
 var showClassroom = (classroom) => {
+  $('#results').empty()
+
   var className = classroom.name;
   var classTeacher = classroom.teacher_name;
   var classAgeRange = ageRange(classroom);
@@ -48,14 +50,28 @@ var listClassroomChildren = (children) => {
   return htmlString;
 }
 
-var newClassroomForm = () => {
+var loadClassroomForm = () => {
   $('#add_classroom').on('click', function(e) {
     e.preventDefault();
     $('#results').empty();
     $('#results').append('<h3>Create New Classroom</h3>');
-    $('#results').append('<form class="new_classroom" id="new_classroom" action="/classrooms" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ETHCfP3RfUA8UBQBIpkmAnrPetIrQk0nu0+DzLuYRnjeeZtl4M8u1Gl3pxVwk/Xw9U8pdrSkFGK319s79EOHow=="><input placeholder="Classroom Name" type="text" name="classroom[name]" id="classroom_name"><br><br><input placeholder="Teacher Name" type="text" name="classroom[teacher_name]" id="classroom_teacher_name"><br><br>Classroom Age Range:<input type="number" name="classroom[age_low]" id="classroom_age_low"> to <input type="number" name="classroom[age_high]" id="classroom_age_high"><br><br><input type="submit" name="commit" value="Create Classroom"></form>')
+    $('#results').append('<form class="new_classroom" id="new_classroom" action="/classrooms" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ETHCfP3RfUA8UBQBIpkmAnrPetIrQk0nu0+DzLuYRnjeeZtl4M8u1Gl3pxVwk/Xw9U8pdrSkFGK319s79EOHow=="><input placeholder="Classroom Name" type="text" name="classroom[name]" id="classroom_name"><br><br><input placeholder="Teacher Name" type="text" name="classroom[teacher_name]" id="classroom_teacher_name"><br><br>Classroom Age Range:<input type="number" name="classroom[age_low]" id="classroom_age_low"> to <input type="number" name="classroom[age_high]" id="classroom_age_high"><br><br><input id="submit" type="submit" name="commit" value="Create Classroom"></form>')
+
+    $('form').submit(function(e) {
+      e.preventDefault();
+      var $form = $(this);
+      var data = $form.serialize();
+      var action = $form.attr('action')
+
+      console.log(data);
+      console.log(action);
+
+      $.post(action, data).done(function(data){
+        var classroom = data;
+        showClassroom(classroom);
+      })
+
+    })
   })
+
 }
-
-
-'<form class="new_classroom" id="new_classroom" action="/classrooms" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ETHCfP3RfUA8UBQBIpkmAnrPetIrQk0nu0+DzLuYRnjeeZtl4M8u1Gl3pxVwk/Xw9U8pdrSkFGK319s79EOHow=="><input placeholder="Classroom Name" type="text" name="classroom[name]" id="classroom_name"><br><br><input placeholder="Teacher Name" type="text" name="classroom[teacher_name]" id="classroom_teacher_name"><br><br>Classroom Age Range:<input type="number" name="classroom[age_low]" id="classroom_age_low"> to <input type="number" name="classroom[age_high]" id="classroom_age_high"><br><br><input type="submit" name="commit" value="Create Classroom"></form>'
