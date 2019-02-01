@@ -48,7 +48,8 @@ class ClassroomsController < ApplicationController
 
   def update
     if @classroom.update(classroom_params)
-      redirect_to classrooms_path
+      # redirect_to classrooms_path
+      redirect_to admin_index_path
     else
       render :edit
     end
@@ -56,7 +57,8 @@ class ClassroomsController < ApplicationController
 
   def destroy
     @classroom.destroy
-    redirect_to classrooms_path
+    # redirect_to classrooms_path
+    redirect_to admin_index_path
   end
 
 

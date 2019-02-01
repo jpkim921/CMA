@@ -5,8 +5,10 @@ $(document).ready(function() {
   $('td a').on('click', function (e) {
       e.preventDefault();
       $('#results').empty();
-      var url = this.href;
-      var query;
+
+      const url = this.href;
+      let query;
+
       query = url.substring('https://localhost:3000/admin/'.length)
       console.log(query)
 
@@ -25,7 +27,7 @@ $(document).ready(function() {
 });
 
 // populate div#results with classrooms index
-var classroomsResults = (data) => {
+const classroomsResults = (data) => {
   $('#results').append('<a id="add_classroom" href="/classrooms/new">Add Classroom</a>')
 
   // add the rows with column heading
@@ -33,13 +35,13 @@ var classroomsResults = (data) => {
 
   data.forEach((classroom) => {
     console.log(classroom)
-    var baseURL = 'https://localhost:3000/admin/classrooms/'
-    var className = classroom.name;
-    var classTeacher = classroom.teacher_name;
-    var classAgeRange = classroom.age_low + " - " + classroom.age_high;
-    var numOfStudents = classroom.children.length
-    var editURL = '<a attr-edit="edit" href="https://localhost:3000/classrooms/' + classroom.id + '/edit">Edit</a>'
-    var deleteURL = '<a attr-delete="delete" data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="https://localhost:3000/classrooms/' + classroom.id + '">Delete</a>'
+    const baseURL = 'https://localhost:3000/admin/classrooms/'
+    const className = classroom.name;
+    const classTeacher = classroom.teacher_name;
+    const classAgeRange = classroom.age_low + " - " + classroom.age_high;
+    const numOfStudents = classroom.children.length
+    const editURL = '<a attr-edit="edit" href="https://localhost:3000/classrooms/' + classroom.id + '/edit">Edit</a>'
+    const deleteURL = '<a attr-delete="delete" data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="https://localhost:3000/classrooms/' + classroom.id + '">Delete</a>'
 
     $('#classrooms_index').append('<tr><td><a href='+'"https://localhost:3000/classrooms/' + classroom.id + '">' + className + '</a></td><td>' + classTeacher + '</td><td>' + classAgeRange + '</td><td>' + numOfStudents + '</td><td>' + editURL + '</td><td>' + deleteURL + '</td></tr>')
   });
@@ -49,12 +51,12 @@ var classroomsResults = (data) => {
 }
 
 // populate div#results with parents index
-var parentsResults = (data) => {
+const parentsResults = (data) => {
 
   data.forEach((parent) => {
     console.log(parent)
-    var parent_name = parent.first_name + ' ' + parent.last_name
-    var baseURL = 'https://localhost:3000/parents/'
+    let parent_name = parent.first_name + ' ' + parent.last_name
+    let baseURL = 'https://localhost:3000/parents/'
     $('#results').append('<li><a href='+ baseURL + parent.id + '>' + parent_name + '</a></li>')
   });
 
@@ -62,7 +64,7 @@ var parentsResults = (data) => {
 }
 
 // populate div#results with children index
-var childrenResults = (data) => {
+const childrenResults = (data) => {
   // add the rows with column heading
   $('#results').append('<table id="children_index"><tbody><tr><td>Child Name</td><td>Age</td><td>Edit Column</td><td>Delete Column</td></tr></tbody></table>')
 
@@ -85,12 +87,12 @@ var childrenResults = (data) => {
 // to convert child age from Ruby to use with JS
 
 // changes string date to timestamp
-var timeStamp = (stringDate) => {
-  var datum = Date.parse(stringDate);
+const timeStamp = (stringDate) => {
+  let datum = Date.parse(stringDate);
   return datum;
 }
 //converts to human readable time format
-var timeConverter = (UNIX_timestamp)=> {
+const timeConverter = (UNIX_timestamp)=> {
   var time = new Date(UNIX_timestamp);
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var year = time.getFullYear();
