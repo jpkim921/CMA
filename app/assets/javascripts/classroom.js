@@ -2,13 +2,13 @@ console.log('classroom js test')
 
 // $('a[attr-edit="edit"]')
 
-var loadClassroom = () => {
+let loadClassroom = () => {
   $('#classrooms_index a').on('click', function(e) {
       e.preventDefault();
-      var url = this.href;
+      const url = this.href;
 
       // console.log("testing link")
-      console.log(url)
+      // console.log(url)
 
       // $('#results').empty()
       $.get(url, showClassroom)
@@ -17,12 +17,12 @@ var loadClassroom = () => {
 }
 
 
-var showClassroom = (classroom) => {
+let showClassroom = (classroom) => {
   $('#results').empty()
 
-  var className = classroom.name;
-  var classTeacher = classroom.teacher_name;
-  var classAgeRange = ageRange(classroom);
+  let className = classroom.name;
+  let classTeacher = classroom.teacher_name;
+  let classAgeRange = ageRange(classroom);
 
   $('#results').append('<h2>' + className + '</h2>')
   $('#results').append('<h3>' + classAgeRange + '</h3>')
@@ -32,16 +32,17 @@ var showClassroom = (classroom) => {
 
 }
 
-var ageRange = (classroom) => {
+let ageRange = (classroom) => {
   return `${classroom.age_low} to ${classroom.age_high} year olds`
 }
 
-var listClassroomChildren = (children) => {
-  var htmlString = '';
+// lists the children in the classroom (has_many relationship)
+let listClassroomChildren = (children) => {
+  let htmlString = '';
   children.forEach((child) => {
-    var firstName = child.first_name;
-    var lastName = child.last_name;
-    var parentContact = `${child.parent.first_name} ${child.parent.last_name}`;
+    let firstName = child.first_name;
+    let lastName = child.last_name;
+    let parentContact = `${child.parent.first_name} ${child.parent.last_name}`;
 
 
     htmlString += '<tr><td>' + firstName + '</td><td>' + lastName + '</td><td>' + parentContact + '</td></tr>'
@@ -50,7 +51,7 @@ var listClassroomChildren = (children) => {
   return htmlString;
 }
 
-var loadClassroomForm = () => {
+let loadClassroomForm = () => {
   $('#add_classroom').on('click', function(e) {
     e.preventDefault();
     $('#results').empty();
@@ -59,15 +60,15 @@ var loadClassroomForm = () => {
 
     $('form').submit(function(e) {
       e.preventDefault();
-      var $form = $(this);
-      var data = $form.serialize();
-      var action = $form.attr('action')
+      let $form = $(this);
+      let data = $form.serialize();
+      let action = $form.attr('action')
 
-      console.log(data);
-      console.log(action);
+      // console.log(data);
+      // console.log(action);
 
       $.post(action, data).done(function(data){
-        var classroom = data;
+        let classroom = data;
         showClassroom(classroom);
       })
 
@@ -75,3 +76,48 @@ var loadClassroomForm = () => {
   })
 
 }
+
+//delete link in classroom#index
+let deleteClassroom = () => {
+  console.log("inside deleteClassroom")
+  $('a[attr-delete="delete"]').on('click', function(e) {
+    // debugger
+    e.preventDefault();
+    // let $this = $(this)
+    // console.log ($this.href)
+    let url = this.href;
+    console.log('this.href', url)
+    $.ajax({
+      type: "DELETE",
+      url: url,
+      dataType: "json",
+      data: {"_method":"delete"},
+      complete: function(){
+        $('#results').empty();
+        $('a[attr-index="classrooms"]').trigger("click");
+
+        console.log('Delete Successful')
+
+      }
+    })
+  });
+}
+
+//
+// $(document).on(“click”, ‘a.jquery-postback’, function(event){
+//  event.preventDefault();
+//  var goal = this
+// goal.parentElement.remove()
+//  $.ajax({
+//  type: ‘DELETE’,
+//  url: goal.href,
+//  dataType: “json”,
+//  data: {“_method”:”delete”},
+//  complete: function(){
+//  alert(“Deleted Successfully”);
+//  },
+//  error: function(result){
+//  “something went wrong”
+//  }
+//  });
+// })

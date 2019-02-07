@@ -59,6 +59,7 @@ class ClassroomsController < ApplicationController
     @classroom.destroy
     # redirect_to classrooms_path
     redirect_to admin_index_path
+    # render json: @classroom
   end
 
 

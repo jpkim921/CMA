@@ -11,10 +11,10 @@ Parent.prototype.name = function () {
 }
 
 
-var loadParent = () => {
+const loadParent = () => {
   $('li a').on('click', function(e) {
     e.preventDefault();
-    var url = this.href;
+    let url = this.href;
 
     console.log(url, 'parent.js')
 
@@ -27,18 +27,18 @@ var loadParent = () => {
   })
 }
 
-var showParent = (parent) => {
+const showParent = (parent) => {
   console.log("showParents TEST")
-  var jsParentObj = new Parent(parent)
+  let jsParentObj = new Parent(parent)
 
-  var parentName = jsParentObj.name();
-  var phoneNumber = parent.phone_number;
+  let parentName = jsParentObj.name();
+  let phoneNumber = parent.phone_number;
 
-  var logoutLink = '<a rel="nofollow" data-method="post" href="/logout">Log Out</a>';
-  var editLink = '<a href="/parents/' + parent.id + '/edit">Edit</a> ';
-  var deleteLink = '<a data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="/parents/' + 2+ '">Delete</a>';
-  var addChildLink = '<div><a href="/parents/' + parent.id + '/children/new">Add Child</a></div>'
-  var listOfChildren = listChildren(parent.children);
+  const logoutLink = '<a rel="nofollow" data-method="post" href="/logout">Log Out</a>';
+  let editLink = '<a href="/parents/' + parent.id + '/edit">Edit</a> ';
+  let deleteLink = '<a data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="/parents/' + parent.id + '">Delete</a>';
+  let addChildLink = '<div><a href="/parents/' + parent.id + '/children/new">Add Child</a></div>'
+  let listOfChildren = listChildren(parent.children);
 
   $('#results').append('<h2>' + parentName + '</h2>');
   $('#results').append('<div class=""><strong>Phone Number: </strong>' + phoneNumber + '</div>')
@@ -53,13 +53,13 @@ var showParent = (parent) => {
 
 }
 
-var listChildren = (children) => {
-  var htmlString = '';
+const listChildren = (children) => {
+  let htmlString = '';
   children.forEach((child) => {
-    var childName = `${child.first_name} ${child.last_name}`
-    var age = getChildAge(child.dob)
-    var editLink = '<a href="/parents/' + child.parent.id + '/children/' + child.id + '/edit">Edit</a>'
-    var deleteLink = '<a data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="/children/' + child.id + '">Delete</a>'
+    let childName = `${child.first_name} ${child.last_name}`
+    let age = getChildAge(child.dob)
+    let editLink = '<a href="/parents/' + child.parent.id + '/children/' + child.id + '/edit">Edit</a>'
+    let deleteLink = '<a data-confirm="Confirm Deletion" rel="nofollow" data-method="delete" href="/children/' + child.id + '">Delete</a>'
     htmlString += '<tr><td><li>' + childName + '</li></td><td> Age: ' + age + ' </td><td> ' + editLink + ' </td><td> ' + deleteLink + ' </td></tr>'
 
   })
