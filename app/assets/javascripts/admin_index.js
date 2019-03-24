@@ -85,6 +85,7 @@ const childrenResults = (data) => {
     console.log(deleteURL)
     $('#children_index').append('<tr><td><a href='+ baseURL + child.id + '>' + child_name + '</a></td><td>' + getChildAge(child.dob) + '</td><td>' + editURL + '</td><td>' + deleteURL + '</td></tr>')
   });
+  loadChild();
 }
 
 
@@ -109,13 +110,13 @@ const timeConverter = (UNIX_timestamp)=> {
   return convertedTime;
 }
 
-const getChildAge = (dob) => {
-  let dobConvert = timeStamp(dob)
-  let dateNow = Date.now()
-  let diff = dateNow - dobConvert
-
-  let jsTime = new Date(timeConverter(diff))
-
-  return jsTime.getFullYear() - 1970
-
-}
+// const getChildAge = (dob) => {
+//   let dobConvert = timeStamp(dob)
+//   let dateNow = Date.now()
+//   let diff = dateNow - dobConvert
+//
+//   let jsTime = new Date(timeConverter(diff))
+//
+//   return jsTime.getFullYear() - 1970
+//
+// }

@@ -53,6 +53,7 @@ const showParent = (parent) => {
 
 }
 
+// list children that belongs to the parent
 const listChildren = (children) => {
   let htmlString = '';
   children.forEach((child) => {
