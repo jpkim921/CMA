@@ -16,6 +16,19 @@ let loadClassroom = () => {
   );
 }
 
+let loadChildClassroom = () => {
+  $("[attr='classLink']").on('click', function(e) {
+      e.preventDefault();
+      const url = this.href;
+
+      // console.log("testing link")
+      // console.log(url)
+
+      // $('#results').empty()
+      $.get(url, showClassroom)
+    }
+  );
+}
 
 let showClassroom = (classroom) => {
   $('#results').empty()

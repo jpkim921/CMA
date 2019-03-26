@@ -5,11 +5,9 @@ const getChildAge = (dob) => {
   let dobConvert = timeStamp(dob)
   let dateNow = Date.now()
   let diff = dateNow - dobConvert
-
   let jsTime = new Date(timeConverter(diff))
 
   return jsTime.getFullYear() - 1970
-
 }
 
 const getChildDob = (dob) => {
@@ -26,8 +24,8 @@ const getChildDob = (dob) => {
   return convertedDob;
 }
 
-let hasAllergies = (child) => {
-  if (child.allergy) {
+let hasAllergies = (childAllergy) => {
+  if (childAllergy) {
     return "Child has allergies."
   } else {
     return "Child has no allergies."
@@ -58,20 +56,20 @@ const showChild = (child) => {
   let childName = `${child.first_name} ${child.last_name}`;
   let dob = getChildDob(child.dob);
   // let hasAllergies = child.allergy;
-  let allergies = hasAllergies(child);
+  let allergies = hasAllergies(child.allergy);
   let teacherName = child.classroom.teacher_name;
   let classroomName = child.classroom.name;
-
+  let classroomNameLink = '<a attr="classLink" href="https://localhost:3000/classrooms/' + child.classroom.id + '">' + classroomName + '</a>'
   // console.log(name, dob, hasAllergies, teacher, classroom)
-  console.log(hasAllergies)
+  // console.log(hasAllergies)
 
 
   $('#results').append('<h3>' + childName + '</h3>');
   $('#results').append('<h3>DOB: ' + dob + '</h3>');
   $('#results').append('<h3>' + allergies + '</h3>');
   $('#results').append('<h3>Teacher: ' + teacherName + '</h3>');
-  $('#results').append('<h3>Classroom: ' + classroomName + '</h3>');
-
+  $('#results').append('<h3>Classroom: ' + classroomNameLink + '</h3>');
+  loadChildClassroom();
 
 
 }
