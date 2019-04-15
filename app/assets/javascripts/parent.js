@@ -19,9 +19,9 @@ const loadParent = () => {
     console.log(url, 'parent.js')
 
     $('#results').empty()
-    $.get(url, function(data) {
-      console.log(data);
-    })
+    // $.get(url, function(data) {
+    //   console.log(data);
+    // })
     $.get(url, showParent)
 
   })

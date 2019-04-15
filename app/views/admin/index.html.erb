@@ -1,6 +1,9 @@
 
 <h2>Admin Page</h2>
  <%= link_to "Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post %>
+ <button id="sort-button" type="button">
+    Click To Sort
+</button>
 <br><br>
 
 <table>
@@ -8,6 +11,7 @@
   <tr><td><%= link_to "List of Parents", admin_parents_path, :'attr-index' => 'parents' %></td></tr>
   <tr><td><%= link_to "List of Children", admin_children_path, :'attr-index' => 'children' %></td></tr>
 </table>
+
 
 
 <div id="results"></div>
