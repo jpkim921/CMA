@@ -1,4 +1,3 @@
-console.log('classroom js test')
 
 // $('a[attr-edit="edit"]')
 
@@ -7,10 +6,6 @@ let loadClassroom = () => {
       e.preventDefault();
       const url = this.href;
 
-      // console.log("testing link")
-      // console.log(url)
-
-      // $('#results').empty()
       $.get(url, showClassroom)
     }
   );
@@ -20,11 +15,6 @@ let loadChildClassroom = () => {
   $("[attr='classLink']").on('click', function(e) {
       e.preventDefault();
       const url = this.href;
-
-      // console.log("testing link")
-      // console.log(url)
-
-      // $('#results').empty()
       $.get(url, showClassroom)
     }
   );
@@ -40,7 +30,6 @@ let showClassroom = (classroom) => {
   $('#results').append('<h2>' + className + '</h2>')
   $('#results').append('<h3>' + classAgeRange + '</h3>')
   $('#results').append('<table id="classroom_index"><tbody><tr><th>First Name</th><th>Last Name</th><th>Parent Contact</th></tr></tbody></table>')
-  // debugger;
   $('#classroom_index').append(listClassroomChildren(classroom.children));
 
 }
@@ -77,9 +66,6 @@ let loadClassroomForm = () => {
       let data = $form.serialize();
       let action = $form.attr('action')
 
-      // console.log(data);
-      // console.log(action);
-
       $.post(action, data).done(function(data){
         let classroom = data;
         showClassroom(classroom);
@@ -92,14 +78,10 @@ let loadClassroomForm = () => {
 
 //delete link in classroom#index
 let deleteClassroom = () => {
-  console.log("inside deleteClassroom")
   $('a[attr-delete="delete"]').on('click', function(e) {
-    // debugger
     e.preventDefault();
-    // let $this = $(this)
-    // console.log ($this.href)
+
     let url = this.href;
-    console.log('this.href', url)
     $.ajax({
       type: "DELETE",
       url: url,
@@ -108,29 +90,47 @@ let deleteClassroom = () => {
       complete: function(){
         $('#results').empty();
         $('a[attr-index="classrooms"]').trigger("click");
-
-        console.log('Delete Successful')
-
       }
     })
   });
 }
 
-//
-// $(document).on(“click”, ‘a.jquery-postback’, function(event){
-//  event.preventDefault();
-//  var goal = this
-// goal.parentElement.remove()
-//  $.ajax({
-//  type: ‘DELETE’,
-//  url: goal.href,
-//  dataType: “json”,
-//  data: {“_method”:”delete”},
-//  complete: function(){
-//  alert(“Deleted Successfully”);
-//  },
-//  error: function(result){
-//  “something went wrong”
-//  }
-//  });
-// })
+const sortTheData = function(data) {
+  const sortedData = data.sort(function(a, b) {
+      let nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      let nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+  });
+  return sortedData;
+}
+
+const populateClassroomList = function(data) {
+
+  data.forEach((classroom) => {
+    const baseURL = 'https://localhost:3000/admin/classrooms/'
+    let className = classroom.name;
+    let classTeacher = classroom.teacher_name;
+    let classAgeRange = classroom.age_low + " - " + classroom.age_high;
+    let numOfStudents = classroom.children.length
+    let editURL = '<a attr-edit="edit" href="https://localhost:3000/classrooms/' + classroom.id + '/edit">Edit</a>'
+    let deleteURL = '<a class="delete-classroom" attr-delete="delete" data-classrom-id="'+ classroom.id + '" data-confirm="Confirm Deletion" rel="nofollow" href="https://localhost:3000/classrooms/' + classroom.id + '">Delete</a>'
+
+    $('#classrooms_index').append('<tr><td><a href='+'"https://localhost:3000/classrooms/' + classroom.id + '">' + className + '</a></td><td>' + classTeacher + '</td><td>' + classAgeRange + '</td><td>' + numOfStudents + '</td><td>' + editURL + '</td><td>' + deleteURL + '</td></tr>')
+  });
+}
+
+function sortClassroomButton() {
+  $('#sort-button').on('click', function(e){
+    data = sortTheData(data)
+    $('#classrooms_index').empty()
+    $('#classrooms_index').append('<table id="classrooms_index"><tbody><tr><th>Class Name</th><th>Teacher</th><th>Age Range</th><th>Number of Students</th></tr></tbody></table>')
+    populateClassroomList(data);
+  })
+}
